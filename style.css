@@ -1,9 +1,10 @@
 main {
   min-height: 450px;
   min-width: 500px;
+  margin-top: 50px;
 }
 #maintext {
-  min-width: 40%;
+  min-width: 410px;
 }
 
 .checked {
@@ -11,6 +12,5 @@ main {
 }
 
 #text {
-  min-width: 350px;
+  min-width: 450px;
 }
-
