@@ -1,3 +1,16 @@
-.checked {
-    text-decoration: line-through;
+main {
+  min-height: 450px;
+  min-width: 500px;
 }
+#maintext {
+  min-width: 40%;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+#text {
+  min-width: 350px;
+}
+

@@ -18,8 +18,8 @@ const createList = () => {
     const content = document.createElement("div");
     tasksContainer.appendChild(content);
 
-    const input1 = document.createElement("input");
-    input1.classList.add("bg-warning", "rounded-pill", "fs-3");
+    const input1 = document.createElement("textarea");
+    input1.classList.add("bg-warning", "fs-5", "rounded");
     input1.setAttribute("id", "text");
     input1.setAttribute("type", "text");
     input1.setAttribute("readonly", "readonly");
@@ -42,9 +42,6 @@ const createList = () => {
     btnEdit.innerHTML = "Edit";
     actions.appendChild(btnEdit);
     btnEdit.addEventListener("click", () => {
-      // this also works, but the btn.innerText won't change
-      //input1.toggleAttribute("readonly");
-
       if (btnEdit.innerHTML === "Edit") {
         input1.removeAttribute("readonly");
         btnEdit.innerHTML = "Save";
@@ -67,7 +64,6 @@ const createList = () => {
     checkbox.classList.add("ms-2");
     checkbox.addEventListener("change", (e) => {
       const checked = e.target.checked;
-      //console.log(checked);
       checked
         ? input1.classList.add("checked")
         : input1.classList.remove("checked");
@@ -81,7 +77,6 @@ const createList = () => {
 
 addBtn.addEventListener("click", createList);
 mainText.addEventListener("keyup", (e) => {
-  //console.log(e.keyCode);
   if (e.keyCode === 13 && mainText.value !== "") {
     createList();
   }
