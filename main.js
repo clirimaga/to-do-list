@@ -1,62 +1,33 @@
-window.addEventListener("load", () => {
-  const form = document.querySelector("#new-task-form");
-  const input = document.querySelector("#new-task-input");
-  const list_el = document.querySelector("#tasks");
+//  HTML element to variable
+const addToDoButton = document.getElementById("addToDo");
+const toDoContainer = document.getElementById("toDoContainer");
+const inputField = document.getElementById("inputField");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+// Variable with EventListener
+addToDoButton.addEventListener("click", () => {
+  //when "ADD" clicked create a <p></p>
+  const paragraph = document.createElement("p");
 
-    const task = input.value;
+  // add style on this <p> (I think just skip this styling thing )
+  // paragraph.classList.add("paragraph-styling");
 
-    const task_el = document.createElement("div");
-    task_el.classList.add("task");
+  //inner what we input into this <p>
+  paragraph.innerText = inputField.value;
+  //put the new item into list
+  toDoContainer.appendChild(paragraph);
+  toDoContainer.appendChild(b);
 
-    const task_content_el = document.createElement("div");
-    task_content_el.classList.add("content");
+  // clean input text
+  inputField.value = "";
 
-    task_el.appendChild(task_content_el);
+  // click on item then add strik mark for item text
+  paragraph.addEventListener("click", () => {
+    paragraph.style.textDecoration = "line-through";
+  });
 
-    const task_input_el = document.createElement("input");
-    task_input_el.classList.add("text");
-    task_input_el.type = "text";
-    task_input_el.value = task;
-    task_input_el.setAttribute("readonly", "readonly");
-
-    task_content_el.appendChild(task_input_el);
-
-    const task_actions_el = document.createElement("div");
-    task_actions_el.classList.add("actions");
-
-    const task_edit_el = document.createElement("button");
-    task_edit_el.classList.add("edit");
-    task_edit_el.innerText = "Edit";
-
-    const task_delete_el = document.createElement("button");
-    task_delete_el.classList.add("delete");
-    task_delete_el.innerText = "Delete";
-
-    task_actions_el.appendChild(task_edit_el);
-    task_actions_el.appendChild(task_delete_el);
-
-    task_el.appendChild(task_actions_el);
-
-    list_el.appendChild(task_el);
-
-    input.value = "";
-
-    task_edit_el.addEventListener("click", (e) => {
-      if (task_edit_el.innerText.toLowerCase() == "edit") {
-        task_edit_el.innerText = "Save";
-        task_input_el.removeAttribute("readonly");
-        task_input_el.focus();
-      } else {
-        task_edit_el.innerText = "Edit";
-        task_input_el.setAttribute("readonly", "readonly");
-      }
-    });
-
-    task_delete_el.addEventListener("click", (e) => {
-      list_el.removeChild(task_el);
-    });
+  // double click to delete item
+  paragraph.addEventListener("dblclick", () => {
+    toDoContainer.removeChild(paragraph);
   });
 });
+// 要動態創建按鈕，可以使用js的document.createElement()方法，要為按鈕添加onclick事件，可以使用js的setAttribute方法
